@@ -4,7 +4,10 @@ import CardSection from './CardSection';
 class App extends Component {
   constructor() {
     super();
-    this.state = {fetchComplete: false}
+    this.state = {
+      fetchComplete: false,
+      modalOn: false
+    }
   }
 
   componentDidMount() {

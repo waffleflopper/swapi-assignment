@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import Modal from './Modal';
+import Button from './Button';
 
 const Tile = styled.section`
     display: inline-block;
@@ -19,13 +21,38 @@ const Tile = styled.section`
     }
 `
 
-const Card = ({name, gender, dob}) => {
-    return (
-        <Tile>
-            <h2>{name}</h2>
-            {gender} || {dob}
-        </Tile>
-    )
+
+class Card extends React.Component {
+    constructor() {
+        super();
+        this.state = {
+            modalOn: false
+        }
+    }
+
+    showModal = () => {
+        this.setState({modalOn: true});
+    }
+    
+    hideModal = () => {
+        this.setState({modalOn: false});
+    }
+
+    render() {
+        const {name, gender, dob} = this.props;
+        return (
+            <Tile>
+                <Modal show={this.state.modalOn} handleClose={this.hideModal}>
+                    <h1>{name}</h1>
+                    <p><strong>DOB: </strong>{dob}</p>
+                    <p><strong>Gender: </strong>{gender}</p>
+                </Modal>
+                <h2>{name}</h2>
+                <Button type="button" onClick={this.showModal}>open</Button>
+            </Tile>
+    
+        );
+    }
 }
 
 export default Card;
