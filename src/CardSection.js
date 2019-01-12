@@ -6,8 +6,8 @@ const Section = styled.section`
     text-align: center;
 `
 
-const CardSection = ({people}) => {
-    console.log("cardSection", people);
+const CardSection = (props) => {
+    const people = props.people;
     const cardData = people.map((person, i) => {
         return (<Card 
         key={i}
