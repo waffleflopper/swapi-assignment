@@ -21,7 +21,6 @@ const Tile = styled.section`
     }
 `
 
-
 class Card extends React.Component {
     constructor() {
         super();
