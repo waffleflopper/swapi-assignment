@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import CardSection from './CardSection';
 import Loading from './Loading';
+import Table from './Table';
 
 class App extends Component {
   constructor() {
@@ -68,7 +69,7 @@ class App extends Component {
     if (this.state.fetchComplete) {
       return (
         <div>
-          <CardSection people={this._peopleData}/>
+          <CardSection people={this._peopleData} />
       </div>
       )
     }
