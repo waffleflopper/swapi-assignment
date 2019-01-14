@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Card from './Card';
+import FlipCard from './FlipCard';
 
 const Section = styled.section`
     text-align: center;
@@ -9,11 +9,9 @@ const Section = styled.section`
 const CardSection = (props) => {
     const people = props.people;
     const cardData = people.map((person, i) => {
-        return (<Card 
+        return (<FlipCard 
         key={i}
-        name={people[i].name}
-        gender={people[i].gender}
-        dob={people[i].birth_year}
+        data={people[i]}
         />);
     })
 
