@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import CardSection from './CardSection';
 import Loading from './Loading';
-import Table from './Table';
+import TopNav from './TopNav';
 
 class App extends Component {
   constructor() {
@@ -19,17 +19,6 @@ class App extends Component {
     this.fetchAllPeople();
   }
 
-/*   fetchSwapi = async function() {
-    try {
-      const peoples = await fetch('https://swapi.co/api/people');
-      const peopleJSON = await peoples.json();
-      this._peoples = peopleJSON.results;
-      this.setState({fetchComplete: true})
-    } catch (err) {
-      console.log("something wen't terribly wrong", err);
-    }
-  } */
-
   fetchURL = async (url) => {
     const result = await fetch(url);
     const data = await result.json();
@@ -42,8 +31,6 @@ class App extends Component {
     const result = await fetch('https://swapi.co/api/people');
     const data = await result.json();
     const pages = Math.ceil((data.count)/10);
-
-    //console.log(pages);
 
     //add the first data to to url array then we'll loop on the pages to get the rest
     const urls = [];
@@ -69,6 +56,7 @@ class App extends Component {
     if (this.state.fetchComplete) {
       return (
         <div>
+          <TopNav/>
           <CardSection people={this._peopleData} />
       </div>
       )
