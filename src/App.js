@@ -45,7 +45,10 @@ class App extends Component {
         .then(data => data.results.map(user => this._peopleData.push(user)))
     );
 
-    Promise.all(charsFetch)
+
+    //it doesn't work without this, even though the user above is correct on console.log
+    //it ends up just being a promise by the time it renders, so i have to put this in
+    Promise.all(charsFetch) 
       .then(results => this.setState({api_data: this._peopleData}))
       .then(this.setState({fetchComplete: true}))
       .catch((err) => console.log('ERROR, please check', err))
